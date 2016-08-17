@@ -1,5 +1,4 @@
 <div class="timer">
-  <h1 id="countdown">{{time}}</h1>
-  <button ng-show="!timerRunning" class="btn btn-default" ng-click="countdown()">Start</button>
-  <button ng-show="timerRunning" class="btn btn-danger" ng-click="resetTimer()">Reset</button>
+  <h1 id="countdown">{{timer.getCurrentTime() | secondsToDateTime | date:'mm:ss'}}</h1>
+  <button class="btn btn-default" ng-click="timer.startResetToggle()">{{timer.getBtnTxt()}}</button>
 </div>

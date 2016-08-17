@@ -1,43 +1,76 @@
 (function() {
-  function Timer($timeout) {
+  function Timer($interval, TIME_CONSTANTS) {
+    // var BREAKTIME = 300;
+    // var POMODOROTIME = 1500;
+    var isRunning = false;
+    var currentTime = TIME_CONSTANTS.POMODOROTIME;
+    var stopTime;
+    var timerState = "pomodoro";
+    var btnText = "Start";
+
+    function slayer(){
+      if(currentTime > 0){
+        currentTime = currentTime - 1;
+      }else{
+        if(timerState == "pomodoro"){
+          timerState = "break";
+          currentTime = TIME_CONSTANTS.BREAKTIME;
+        }else{
+          timerState = "pomodoro";
+          currentTime = TIME_CONSTANTS.POMODOROTIME;
+        }
+
+        btnText = 'Start';
+        isRunning = false;
+        $interval.cancel(stopTime);
+        stopTime = null;
+      }
+    }
+
+    var startTimer = function(){
+      if(!stopTime){
+        stopTime = $interval(slayer, 1000);
+        isRunning = true;
+        btnText = 'Reset';
+      }
+    };
+
     return {
-      countdown: function(elementName, minutes, seconds) {
-        var endTime,
-            hours,
-            mins,
-            msLeft,
-            time;
-
-        function twoDigits(n) {
-          return (n <= 9 ? '0' + n : n);
-        }
-
-        function updateTimer() {
-          msLeft = endTime - (+new Date());
-
-          if (msLeft < 1000) {
-            element.innerHTML = "Countdown's Over!";
-          } else {
-            time = new Date(msLeft);
-            hours = time.getUTCHours();
-            mins = time.getUTCMinutes();
-            element.innerHTML = (hours ? hours + ':' + twoDigits(mins) : mins) + ':' + twoDigits(time.getUTCSeconds());
-            stopped = $timeout(updateTimer, time.getUTCMilliseconds() + 500);
-          }
-        }
-
-        element = document.getElementById(elementName);
-        endTime = (+new Date()) + 1000 * (60 * minutes + seconds) + 500;
-        updateTimer();
+      getCurrentTime: function(){
+        return currentTime;
       },
-      stop: function() {
-        $timeout.cancel(stopped);
-        element.innerHTML = '25:00';
+      getBtnTxt: function(){
+        return btnText;
+      },
+      getState: function(){
+        return timerState;
+      },
+      startResetToggle: function(){
+        if(isRunning){
+          if (timerState == "pomodoro") {
+            console.log("RESET");
+            $interval.cancel(stopTime);
+            stopTime = null;
+            isRunning = false;
+            currentTime = TIME_CONSTANTS.POMODOROTIME;
+            btnText = 'Start';
+          } else {
+            console.log("RESET");
+            $interval.cancel(stopTime);
+            stopTime = null;
+            isRunning = false;
+            currentTime = TIME_CONSTANTS.BREAKTIME;
+            btnText = 'Start';
+          }
+        }else{
+          console.log("STARTED");
+          startTimer();
+        }
       }
     };
   }
 
   angular
     .module('bloctime')
-    .factory('Timer', ['$timeout', Timer]);
+    .factory('Timer', ['$interval', 'TIME_CONSTANTS', Timer]);
 })();
