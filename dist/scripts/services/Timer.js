@@ -1,5 +1,5 @@
 (function() {
-  function Timer($interval, TIME_CONSTANTS) {
+  function Timer($interval, TIME_CONSTANTS, Sound) {
     var isRunning = false,
         currentTime = TIME_CONSTANTS.POMODOROTIME,
         stopTime,
@@ -11,9 +11,6 @@
       if(currentTime > 0){
         currentTime = currentTime - 1;
       } else {
-        
-        console.log(timerState);
-
         if(timerState == "pomodoro"){
           if (completedWorkSessions == 3) {
             timerState = "thirtyMinuteBreak";
@@ -46,6 +43,10 @@
       }
     };
 
+    var ringBell = function() {
+      Sound.playBuzzer();
+    };
+
     return {
       getCurrentTime: function(){
         return currentTime;
@@ -55,6 +56,9 @@
       },
       getState: function(){
         return timerState;
+      },
+      getTimerRunningStatus: function() {
+        return isRunning;
       },
       startResetToggle: function(){
         if(isRunning){
@@ -84,11 +88,14 @@
           console.log("STARTED");
           startTimer();
         }
+      },
+      ringBell: function() {
+        Sound.playBuzzer();
       }
     };
   }
 
   angular
     .module('bloctime')
-    .factory('Timer', ['$interval', 'TIME_CONSTANTS', Timer]);
+    .factory('Timer', ['$interval', 'TIME_CONSTANTS', 'Sound', Timer]);
 })();
