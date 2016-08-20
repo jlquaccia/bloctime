@@ -2,3 +2,22 @@
   <h1 id="countdown">{{timer.getCurrentTime() | secondsToDateTime | date:'mm:ss'}}</h1>
   <button class="btn btn-default" ng-click="timer.startResetToggle()">{{timer.getBtnTxt()}}</button>
 </div>
+
+<div class="row">
+  <div class="col-md-4">
+    <div class="text-left">
+    <h3>Task History</h3>
+    <form>
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Enter task" ng-model="newTask">
+        <br>
+        <button class="btn btn-default" ng-click="addTask(newTask)">Add Task</button>
+      </div>
+    </form>
+
+    <ul>
+      <li ng-repeat="task in tasks">{{task.task}}</li>
+    </ul>
+  </div>
+  </div>
+</div>
