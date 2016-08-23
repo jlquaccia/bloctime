@@ -6,7 +6,10 @@
     return {
       all: tasks,
       addTask: function(task) {
-        tasks.$add({task: task}).then(function(ref) {
+        tasks.$add({
+          task: task,
+          created_at: Date()
+        }).then(function(ref) {
           var id = ref.key;
           console.log('added record with id: ' + id + ' task: ' + task);
         });

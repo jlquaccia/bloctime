@@ -16,7 +16,7 @@
     </form>
 
     <ul>
-      <li ng-repeat="task in tasks">{{task.task}}</li>
+      <li ng-repeat="task in tasks | orderBy:'-created_at'">{{task.task}}</li>
     </ul>
   </div>
   </div>
