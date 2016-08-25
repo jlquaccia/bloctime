@@ -4,9 +4,19 @@
     $scope.sound = Sound;
     $scope.tasks = Tasks.all;
 
+    console.log('timerState is ' + Timer.getState());
+
     $scope.$watch(Timer.getCurrentTime, function(newVal, oldVal) {
       if (newVal === 0) {
         Timer.ringBell();
+      }
+    });
+
+    $scope.$watch(Timer.getLoaderStatus, function(newVal, oldVal) {
+      if (newVal === true) {
+        console.log('loaderStatus is true');
+      } else {
+        console.log('loaderStatus is false');
       }
     });
 

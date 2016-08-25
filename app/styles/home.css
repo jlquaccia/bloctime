@@ -8,4 +8,54 @@
   left: 0;
   width: 100px;
   height: 100px;
+  z-index: 9999;
+}
+
+.container-fluid.no_padding {
+  padding: 0;
+}
+
+/**/
+
+.loading-page{
+  background-color: #7e7e7e;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+}
+
+.pomLoader{
+  width: 100%;
+  height: 100%;
+  background-color: #1b1b1b;
+  position: fixed;
+  animation: load 1500s linear;
+}
+
+.breakLoader{
+  width: 100%;
+  height: 100%;
+  background-color: #1b1b1b;
+  position: fixed;
+  animation: load 300s linear;
+}
+
+.thirtyMinuteBreakLoader{
+  width: 100%;
+  height: 100%;
+  background-color: #1b1b1b;
+  position: fixed;
+  animation: load 1800s linear;
+}
+
+.countdown{
+  position: fixed;
+  padding-top: 30%;
+  padding-left:50%;
+  z-index: 999;
+}
+
+@keyframes load{
+  0%{ width:0%;}
+  100%{ width:100%;}
 }

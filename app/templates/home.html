@@ -1,9 +1,9 @@
 <div class="timer">
-  <h1 id="countdown">{{timer.getCurrentTime() | secondsToDateTime | date:'mm:ss'}}</h1>
+  <h1>{{timer.getCurrentTime() | secondsToDateTime | date:'mm:ss'}}</h1>
   <button class="btn btn-default" ng-click="timer.startResetToggle()">{{timer.getBtnTxt()}}</button>
 </div>
 
-<div class="row">
+<!-- <div class="row">
   <div class="col-md-4">
     <div class="text-left">
     <h3>Task History</h3>
@@ -20,4 +20,8 @@
     </ul>
   </div>
   </div>
+</div> -->
+
+<div class="loading-page">
+  <div class="timerProgress" ng-class="{pomLoader: timer.getLoaderStatus() && timer.getState() === 'pomodoro', breakLoader: timer.getLoaderStatus() && timer.getState() === 'break', thirtyMinuteBreakLoader: timer.getLoaderStatus() && timer.getState() === 'thirtyMinuteBreak'}"></div>
 </div>

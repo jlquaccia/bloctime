@@ -5,7 +5,8 @@
         stopTime,
         timerState = "pomodoro",
         btnText = "Start",
-        completedWorkSessions = 0;
+        completedWorkSessions = 0,
+        loaderStatus = false;
 
     function slayer(){
       if(currentTime > 0){
@@ -14,18 +15,24 @@
         if(timerState == "pomodoro"){
           if (completedWorkSessions == 3) {
             timerState = "thirtyMinuteBreak";
+            console.log('timerState is ' + timerState);
             currentTime = TIME_CONSTANTS.THIRTY_MINUTE_BREAKTIME;
             completedWorkSessions = 0;
             console.log('completed work sessions have been reset');
+            loaderStatus = false;
           } else {
             timerState = "break";
+            console.log('timerState is ' + timerState);
             currentTime = TIME_CONSTANTS.BREAKTIME;
             completedWorkSessions += 1;
             console.log(completedWorkSessions + ' completed work sessions');
+            loaderStatus = false;
           }
         } else {
           timerState = "pomodoro";
+          console.log('timerState is ' + timerState);
           currentTime = TIME_CONSTANTS.POMODOROTIME;
+          loaderStatus = false;
         }
 
         btnText = 'Start';
@@ -60,6 +67,9 @@
       getTimerRunningStatus: function() {
         return isRunning;
       },
+      getLoaderStatus: function() {
+        return loaderStatus;
+      },
       startResetToggle: function(){
         if(isRunning){
           if (timerState == "pomodoro") {
@@ -69,6 +79,7 @@
             isRunning = false;
             currentTime = TIME_CONSTANTS.POMODOROTIME;
             btnText = 'Start';
+            loaderStatus = false;
           } else if (timerState == 'thirtyMinuteBreak') {
             console.log("RESET");
             $interval.cancel(stopTime);
@@ -76,6 +87,7 @@
             isRunning = false;
             currentTime = TIME_CONSTANTS.THIRTY_MINUTE_BREAKTIME;
             btnText = 'Start';
+            loaderStatus = false;
           } else {
             console.log("RESET");
             $interval.cancel(stopTime);
@@ -83,10 +95,12 @@
             isRunning = false;
             currentTime = TIME_CONSTANTS.BREAKTIME;
             btnText = 'Start';
+            loaderStatus = false;
           }
         }else{
           console.log("STARTED");
           startTimer();
+          loaderStatus = true;
         }
       },
       ringBell: function() {
