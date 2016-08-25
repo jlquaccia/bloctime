@@ -1,6 +1,6 @@
 <div class="timer">
-  <h1>{{timer.getCurrentTime() | secondsToDateTime | date:'mm:ss'}}</h1>
-  <button class="btn btn-default" ng-click="timer.startResetToggle()">{{timer.getBtnTxt()}}</button>
+  <h1 id="timerCountdown" class="grayText" ng-class="{whiteText: timer.getTimerRunningStatus()}">{{timer.getCurrentTime() | secondsToDateTime | date:'mm:ss'}}</h1>
+  <button class="btn btn-default grayText" ng-click="timer.startResetToggle()" ng-class="{whiteText: timer.getTimerRunningStatus()}">{{timer.getBtnTxt()}}</button>
 </div>
 
 <!-- <div class="row">
@@ -22,6 +22,14 @@
   </div>
 </div> -->
 
-<div class="loading-page">
-  <div class="timerProgress" ng-class="{pomLoader: timer.getLoaderStatus() && timer.getState() === 'pomodoro', breakLoader: timer.getLoaderStatus() && timer.getState() === 'break', thirtyMinuteBreakLoader: timer.getLoaderStatus() && timer.getState() === 'thirtyMinuteBreak'}"></div>
+<div class="loading-page" ng-class="{
+  redBg: timer.getState() === 'pomodoro' && timer.getTimerRunningStatus(),
+  greenBg: timer.getState() === 'break' && timer.getTimerRunningStatus(),
+  grayBg: timer.getState() === 'thirtyMinuteBreak' && timer.getTimerRunningStatus()
+}">
+  <div class="timerProgress" ng-class="{
+    pomLoader: timer.getLoaderStatus() && timer.getState() === 'pomodoro',
+    breakLoader: timer.getLoaderStatus() && timer.getState() === 'break',
+    thirtyMinuteBreakLoader: timer.getLoaderStatus() && timer.getState() === 'thirtyMinuteBreak'
+    }"></div>
 </div>
