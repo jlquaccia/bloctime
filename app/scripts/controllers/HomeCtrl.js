@@ -3,6 +3,7 @@
     $scope.timer = Timer;
     $scope.sound = Sound;
     $scope.tasks = Tasks.all;
+    $scope.menuOpen = false;
 
     console.log('timerState is ' + Timer.getState());
 
@@ -23,6 +24,10 @@
     $scope.addTask = function(task) {
       Tasks.addTask(task);
       $scope.newTask = '';
+    };
+
+    $scope.toggleMenu = function() {
+      $scope.menuOpen = !$scope.menuOpen;
     };
   }
 

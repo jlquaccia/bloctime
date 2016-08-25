@@ -1,3 +1,12 @@
+<!-- Hamburger Menu -->
+<div id="hamburgerMenu" ng-click="toggleMenu()" ng-class="{hamburgerOpen: menuOpen}">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<!-- Timer -->
 <div class="timer">
   <h1 id="timerCountdown" class="grayText" ng-class="{whiteText: timer.getTimerRunningStatus()}">{{timer.getCurrentTime() | secondsToDateTime | date:'mm:ss'}}</h1>
   <button class="btn btn-default grayText" ng-click="timer.startResetToggle()" ng-class="{whiteText: timer.getTimerRunningStatus()}">{{timer.getBtnTxt()}}</button>
@@ -22,6 +31,7 @@
   </div>
 </div> -->
 
+<!-- Timer Progress -->
 <div class="loading-page" ng-class="{
   redBg: timer.getState() === 'pomodoro' && timer.getTimerRunningStatus(),
   greenBg: timer.getState() === 'break' && timer.getTimerRunningStatus(),
