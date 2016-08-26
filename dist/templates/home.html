@@ -5,7 +5,14 @@
     <div class="form-group">
       <input type="text" class="form-control" placeholder="Enter task" ng-model="newTask">
       <br>
-      <button class="btn btn-default" ng-click="addTask(newTask)">Add Task</button>
+      <!-- <button class="btn btn-default" ng-click="addTask(newTask)">Add Task</button> -->
+      <div class="btnContainer">
+        <section class="addTaskBtn">
+          <p>
+            <button class="btn btn-1 btn-1d" ng-click="addTask(newTask)">Add Task</button>
+          </p>
+        </section>
+      </div>
     </div>
   </form>
   <ul class="nav navmenu-nav">
@@ -23,11 +30,22 @@
     <span></span>
     <span></span>
   </div>
-
+  
   <!-- Timer -->
   <div class="timer">
     <h1 id="timerCountdown" class="grayText" ng-class="{whiteText: timer.getTimerRunningStatus()}">{{timer.getCurrentTime() | secondsToDateTime | date:'mm:ss'}}</h1>
-    <button class="btn btn-default grayText" ng-click="timer.startResetToggle()" ng-class="{whiteText: timer.getTimerRunningStatus()}">{{timer.getBtnTxt()}}</button>
+    
+    <!-- <button class="btn btn-default grayText" ng-click="timer.startResetToggle()" ng-class="{whiteText: timer.getTimerRunningStatus()}">{{timer.getBtnTxt()}}</button> -->
+
+    <div class="btnContainer">
+      <section>
+        <p>
+          <!-- <button class="btn btn-1 btn-1d">Button</button> -->
+          <button class="btn btn-1 btn-1d" ng-click="timer.startResetToggle()" ng-class="{whiteText: timer.getTimerRunningStatus()}">{{timer.getBtnTxt()}}</button>
+        </p>
+      </section>
+    </div>
+
   </div>
 
   <!-- Timer Progress -->

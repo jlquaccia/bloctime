@@ -6,6 +6,10 @@
   padding: 0;
 }
 
+body {
+  font-family: 'Amatic SC', cursive;
+}
+
 /*-----------------------------------------------------------------------------------------------------------------------------------*/
 /* Timer */
 /*-----------------------------------------------------------------------------------------------------------------------------------*/
@@ -18,17 +22,28 @@
   right: 0;
   bottom: 0;
   left: 0;
-  width: 100px;
+  width: 100%;
   height: 100px;
   z-index: 9999;
 }
 
 .grayText {
   color: #7D7D7D;
+  position: relative;
+  top: 150px;
 }
 
 .whiteText {
   color: #FFF;
+}
+
+#timerCountdown {
+  font-size: 10em;
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
 }
 
 /*-----------------------------------------------------------------------------------------------------------------------------------*/
@@ -46,7 +61,6 @@
   width: 100%;
   height: 100%;
   background-color: #FFF;
-  /*position: fixed;*/
   animation: load 1500s linear;
 }
 
@@ -54,7 +68,6 @@
   width: 100%;
   height: 100%;
   background-color: #FFF;
-  position: fixed;
   animation: load 300s linear;
 }
 
@@ -62,7 +75,6 @@
   width: 100%;
   height: 100%;
   background-color: #FFF;
-  position: fixed;
   animation: load 1800s linear;
 }
 
@@ -232,4 +244,102 @@ body {
   .canvas {
     padding: 0;
   }
+}
+
+/*-----------------------------------------------------------------------------------------------------------------------------------*/
+/* Start / Reset Button */
+/*-----------------------------------------------------------------------------------------------------------------------------------*/
+
+.btnContainer {
+  height: 100%;
+  position: relative;
+}
+
+.btnContainer > section {
+  margin: 0 auto;
+  padding: 5em 3em;
+  text-align: center;
+  color: #fff;
+}
+
+.btnContainer > section.addTaskBtn {
+  padding: 0;
+}
+
+.btnContainer > section.addTaskBtn .btn {
+  margin: 0;
+  padding: 10px 20px;
+}
+
+.btnContainer > section p {
+  position: relative;
+  margin: 0;
+  padding: 1em;
+  z-index: 1;
+}
+
+.btn {
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background: none;
+  cursor: pointer;
+  padding: 25px 80px;
+  display: inline-block;
+  margin: 15px 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  outline: none;
+  position: relative;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.btn:after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.btn-1 {
+  border: 3px solid #7D7D7D;
+  color: #7D7D7D;
+}
+
+.btn-1d {
+  overflow: hidden;
+}
+
+.btn-1d:after {
+  width: 0;
+  height: 103%;
+  top: 50%;
+  left: 50%;
+  background: #7D7D7D;
+  opacity: 0;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.btn-1d:hover,
+.btn-1d:active {
+  color: #FFF;
+}
+
+.btn-1d:hover:after {
+  width: 101%;
+  opacity: 1;
+}
+
+.btn-1d:active:after {
+  width: 101%;
+  opacity: 1;
 }
