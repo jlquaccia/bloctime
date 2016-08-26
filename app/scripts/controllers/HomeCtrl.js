@@ -31,6 +31,9 @@
     $scope.toggleMenu = function() {
       $scope.menuOpen = !$scope.menuOpen;
     };
+
+    // For site title arc typography effect
+    $('.line-2').arctext({radius: 700});
   }
 
   angular

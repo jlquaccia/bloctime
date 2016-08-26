@@ -33,21 +33,23 @@
   
   <!-- Timer -->
   <div class="timer">
-    <!-- <h1 id="timerCountdown" class="grayText" ng-class="{whiteText: timer.getTimerRunningStatus()}">{{timer.getCurrentTime() | secondsToDateTime | date:'mm:ss'}}</h1>  -->
-
-    <h1 id="timerCountdown" class="grayText">{{timer.getCurrentTime() | secondsToDateTime | date:'mm:ss'}}</h1>
-    
-    <!-- <button class="btn btn-default grayText" ng-click="timer.startResetToggle()" ng-class="{whiteText: timer.getTimerRunningStatus()}">{{timer.getBtnTxt()}}</button> -->
-
-    <div class="btnContainer">
-      <section>
-        <p>
-          <!-- <button class="btn btn-1 btn-1d">Button</button> -->
-          <button class="btn btn-1 btn-1d" ng-click="timer.startResetToggle()" ng-class="{whiteText: timer.getTimerRunningStatus()}">{{timer.getBtnTxt()}}</button>
-        </p>
-      </section>
+    <div class="timerTitle">
+      <span class="line-1">the</span>
+      <span class="line-2">pomodoro</span>
+      <span class="line-3">timer experiment</span>
     </div>
 
+    <div class="countdownAndBtnWrapper">
+      <h1 id="timerCountdown" class="grayText">{{timer.getCurrentTime() | secondsToDateTime | date:'mm:ss'}}</h1>
+      <div class="btnContainer">
+        <section>
+          <p>
+            <!-- <button class="btn btn-1 btn-1d">Button</button> -->
+            <button class="btn btn-1 btn-1d" ng-click="timer.startResetToggle()" ng-class="{whiteText: timer.getTimerRunningStatus()}">{{timer.getBtnTxt()}}</button>
+          </p>
+        </section>
+      </div>
+    </div>
   </div>
 
   <!-- Timer Progress -->
