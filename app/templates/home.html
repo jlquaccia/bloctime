@@ -33,7 +33,9 @@
   
   <!-- Timer -->
   <div class="timer">
-    <h1 id="timerCountdown" class="grayText" ng-class="{whiteText: timer.getTimerRunningStatus()}">{{timer.getCurrentTime() | secondsToDateTime | date:'mm:ss'}}</h1>
+    <!-- <h1 id="timerCountdown" class="grayText" ng-class="{whiteText: timer.getTimerRunningStatus()}">{{timer.getCurrentTime() | secondsToDateTime | date:'mm:ss'}}</h1>  -->
+
+    <h1 id="timerCountdown" class="grayText">{{timer.getCurrentTime() | secondsToDateTime | date:'mm:ss'}}</h1>
     
     <!-- <button class="btn btn-default grayText" ng-click="timer.startResetToggle()" ng-class="{whiteText: timer.getTimerRunningStatus()}">{{timer.getBtnTxt()}}</button> -->
 
