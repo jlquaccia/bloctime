@@ -22,6 +22,8 @@
     });
 
     $scope.addTask = function(task) {
+      if (task === '') return;
+
       Tasks.addTask(task);
       $scope.newTask = '';
     };

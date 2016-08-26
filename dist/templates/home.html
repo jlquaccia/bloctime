@@ -1,45 +1,45 @@
-<!-- Hamburger Menu -->
-<div id="hamburgerMenu" ng-click="toggleMenu()" ng-class="{hamburgerOpen: menuOpen}">
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
+<!-- Hidden Menu -->
+<div class="navmenu navmenu-default navmenu-fixed-left">
+  <a href="#" class="navmenu-brand noPaddingLeft">Task History</a>
+  <form>
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Enter task" ng-model="newTask">
+      <br>
+      <button class="btn btn-default" ng-click="addTask(newTask)">Add Task</button>
+    </div>
+  </form>
+  <ul class="nav navmenu-nav">
+    <li ng-repeat="task in tasks | orderBy:'-created_at'">
+      <a href="#">{{task.task}}</a>
+    </li>
+  </ul>
 </div>
 
-<!-- Timer -->
-<div class="timer">
-  <h1 id="timerCountdown" class="grayText" ng-class="{whiteText: timer.getTimerRunningStatus()}">{{timer.getCurrentTime() | secondsToDateTime | date:'mm:ss'}}</h1>
-  <button class="btn btn-default grayText" ng-click="timer.startResetToggle()" ng-class="{whiteText: timer.getTimerRunningStatus()}">{{timer.getBtnTxt()}}</button>
-</div>
-
-<!-- <div class="row">
-  <div class="col-md-4">
-    <div class="text-left">
-    <h3>Task History</h3>
-    <form>
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="Enter task" ng-model="newTask">
-        <br>
-        <button class="btn btn-default" ng-click="addTask(newTask)">Add Task</button>
-      </div>
-    </form>
-
-    <ul>
-      <li ng-repeat="task in tasks | orderBy:'-created_at'">{{task.task}}</li>
-    </ul>
+<div class="canvas">
+  <!-- Hamburger Menu -->
+  <div id="hamburgerMenu" ng-click="toggleMenu()" ng-class="{hamburgerOpen: menuOpen}" class="navbar-toggle" data-toggle="offcanvas" data-recalc="false" data-target=".navmenu" data-canvas=".canvas">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
   </div>
-  </div>
-</div> -->
 
-<!-- Timer Progress -->
-<div class="loading-page" ng-class="{
-  redBg: timer.getState() === 'pomodoro' && timer.getTimerRunningStatus(),
-  greenBg: timer.getState() === 'break' && timer.getTimerRunningStatus(),
-  grayBg: timer.getState() === 'thirtyMinuteBreak' && timer.getTimerRunningStatus()
-}">
-  <div class="timerProgress" ng-class="{
-    pomLoader: timer.getLoaderStatus() && timer.getState() === 'pomodoro',
-    breakLoader: timer.getLoaderStatus() && timer.getState() === 'break',
-    thirtyMinuteBreakLoader: timer.getLoaderStatus() && timer.getState() === 'thirtyMinuteBreak'
-    }"></div>
+  <!-- Timer -->
+  <div class="timer">
+    <h1 id="timerCountdown" class="grayText" ng-class="{whiteText: timer.getTimerRunningStatus()}">{{timer.getCurrentTime() | secondsToDateTime | date:'mm:ss'}}</h1>
+    <button class="btn btn-default grayText" ng-click="timer.startResetToggle()" ng-class="{whiteText: timer.getTimerRunningStatus()}">{{timer.getBtnTxt()}}</button>
+  </div>
+
+  <!-- Timer Progress -->
+  <div class="loading-page" ng-class="{
+    redBg: timer.getState() === 'pomodoro' && timer.getTimerRunningStatus(),
+    greenBg: timer.getState() === 'break' && timer.getTimerRunningStatus(),
+    grayBg: timer.getState() === 'thirtyMinuteBreak' && timer.getTimerRunningStatus()
+  }">
+    <div class="timerProgress" ng-class="{
+      pomLoader: timer.getLoaderStatus() && timer.getState() === 'pomodoro',
+      breakLoader: timer.getLoaderStatus() && timer.getState() === 'break',
+      thirtyMinuteBreakLoader: timer.getLoaderStatus() && timer.getState() === 'thirtyMinuteBreak'
+      }"></div>
+  </div>
 </div>
