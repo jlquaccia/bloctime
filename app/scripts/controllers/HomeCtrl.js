@@ -28,6 +28,10 @@
       $scope.newTask = '';
     };
 
+    $scope.deleteTask = function(task) {
+      Tasks.deleteTask(task);
+    };
+
     $scope.toggleMenu = function() {
       $scope.menuOpen = !$scope.menuOpen;
     };

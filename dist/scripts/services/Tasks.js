@@ -21,6 +21,13 @@
           var id = ref.key;
           console.log('added record with id: ' + id + ' task: ' + task);
         });
+      },
+      deleteTask: function(task) {
+        var c = confirm('Are you sure?');
+
+        if (c) {
+          tasks.$remove(task);
+        }
       }
     };
   }
