@@ -100,8 +100,8 @@ body {
 /* Loader Bg's */
 /*-----------------------------------------------------------------------------------------------------------------------------------*/
 
-.grayBg {
-  background-color: #7D7D7D;
+.blueBg {
+  background-color: #66AFE9;
 }
 
 .greenBg {
@@ -230,6 +230,18 @@ body {
   padding-left: 0;
 }
 
+.tasks {
+  font-size: 20px;
+}
+
+.taskHistoryTitle {
+  font-size: 35px;
+}
+
+.pt10 {
+  padding-top: 10px;
+}
+
 @media (min-width: 0) {
   .navbar-toggle {
     display: block;
@@ -320,6 +332,10 @@ body {
   font-size: 2em;
 }
 
+.btn-1:focus {
+  outline: none;
+}
+
 .btn-1d {
   overflow: hidden;
 }
@@ -403,6 +419,7 @@ span {
   text-transform: uppercase;
   position: relative;
   letter-spacing: 6px;
+  top: 25px;
 }
 
 .line-3:before,

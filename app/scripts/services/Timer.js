@@ -6,7 +6,8 @@
         timerState = "pomodoro",
         btnText = "Start",
         completedWorkSessions = 0,
-        loaderStatus = false;
+        loaderStatus = false,
+        totalCount = 0;
 
     function slayer(){
       if(currentTime > 0){
@@ -70,6 +71,9 @@
       getLoaderStatus: function() {
         return loaderStatus;
       },
+      getTotalCount: function() {
+        return totalCount;
+      },
       startResetToggle: function(){
         if(isRunning){
           if (timerState == "pomodoro") {
@@ -101,6 +105,8 @@
           console.log("STARTED");
           startTimer();
           loaderStatus = true;
+          totalCount++;
+          console.log(totalCount++);
         }
       },
       ringBell: function() {
