@@ -1,3 +1,17 @@
+<!-- Instructions Overlay -->
+<div class="overlay overlay-corner" ng-class="{openOverlay: instructionOverlay}">
+  <button type="button" class="overlay-close" ng-click="toggleInstructionOverlay()">Close</button>
+  <nav>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Work</a></li>
+      <li><a href="#">Clients</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+</div>
+
 <!-- Hidden Menu -->
 <div class="navmenu navmenu-default navmenu-fixed-left">
   <a href="#" class="navmenu-brand noPaddingLeft taskHistoryTitle">Task History</a>
@@ -5,7 +19,6 @@
     <div class="form-group pt10">
       <input type="text" class="form-control" placeholder="Enter task" ng-model="newTask">
       <br>
-      <!-- <button class="btn btn-default" ng-click="addTask(newTask)">Add Task</button> -->
       <div class="btnContainer">
         <section class="addTaskBtn">
           <p>
@@ -34,7 +47,7 @@
     </div>
 
     <!-- Question Mark -->
-    <a href="#" class="question">
+    <a href="#" class="question" id="trigger-overlay" ng-click="toggleInstructionOverlay()">
       <i class="ion-ios-help-outline"></i>
     </a>
   </div>

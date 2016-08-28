@@ -4,6 +4,7 @@
     $scope.sound = Sound;
     $scope.tasks = Tasks.all;
     $scope.menuOpen = false;
+    $scope.instructionOverlay = false;
 
     console.log('timerState is ' + Timer.getState());
 
@@ -38,6 +39,11 @@
 
     // For site title arc typography effect
     $('.line-2').arctext({radius: 700});
+
+    $scope.toggleInstructionOverlay = function() {
+      $scope.instructionOverlay = !$scope.instructionOverlay;
+      console.log($scope.instructionOverlay);
+    };
   }
 
   angular
