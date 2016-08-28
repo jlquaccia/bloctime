@@ -507,8 +507,9 @@ a.question {
   height: 100%;
   top: 0;
   left: 0;
-  background: rgba(153,204,51,0.9);
   z-index: 9;
+  background: rgba(125,125,125,0.9);
+  color: #fff;
 }
 
 /* Overlay closing cross */
@@ -549,12 +550,13 @@ a.question {
 }
 
 .overlay ul li {
-  display: block;
+  display: flex;
   height: 20%;
   height: calc(100% / 5);
   min-height: 54px;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+  font-size: 3em;
 }
 
 .overlay ul li a {
@@ -589,6 +591,15 @@ a.question {
   transform: translateY(0%);
   -webkit-transition: opacity 0.5s, -webkit-transform 0.5s;
   transition: opacity 0.5s, transform 0.5s;
+}
+
+span.instructionNumber {
+  padding-right: 20px;
+}
+
+.overlay ul li a.pomodoroYouTubeLink {
+  margin: 0 auto;
+  font-size: .5em;
 }
 
 @media screen and (max-height: 30.5em) {
