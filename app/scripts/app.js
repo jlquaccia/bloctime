@@ -17,12 +17,30 @@
       .state('login', {
         url: '/login',
         controller: 'AuthCtrl as authCtrl',
-        templateUrl: '/templates/login.html'
+        templateUrl: '/templates/login.html',
+        resolve: {
+          requireNoAuth: function($state, Auth) {
+            return Auth.$requireSignIn().then(function(auth) {
+              $state.go('home');
+            }, function(error) {
+              return;
+            });
+          }
+        }
       })
       .state('register', {
         url: '/register',
         controller: 'AuthCtrl as authCtrl',
-        templateUrl: '/templates/register.html'
+        templateUrl: '/templates/register.html',
+        resolve: {
+          requireNoAuth: function($state, Auth) {
+            return Auth.$requireSignIn().then(function(auth) {
+              $state.go('home');
+            }, function(error) {
+              return;
+            });
+          }
+        }
       });
   }
 

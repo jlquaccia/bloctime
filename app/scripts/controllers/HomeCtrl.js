@@ -1,10 +1,11 @@
 (function() {
-  function HomeCtrl($scope, Timer, Sound, Tasks) {
+  function HomeCtrl($scope, Timer, Sound, Tasks, Auth) {
     $scope.timer = Timer;
     $scope.sound = Sound;
     $scope.tasks = Tasks.all;
     $scope.menuOpen = false;
     $scope.instructionOverlay = false;
+    $scope.auth = Auth;
 
     console.log('timerState is ' + Timer.getState());
 
@@ -44,9 +45,14 @@
       $scope.instructionOverlay = !$scope.instructionOverlay;
       console.log($scope.instructionOverlay);
     };
+
+    // any time auth state changes, add the user data to scope
+    $scope.auth.$onAuthStateChanged(function(firebaseUser) {
+      $scope.firebaseUser = firebaseUser;
+    });
   }
 
   angular
     .module('bloctime')
-    .controller('HomeCtrl', ['$scope', 'Timer', 'Sound', 'Tasks', HomeCtrl]);
+    .controller('HomeCtrl', ['$scope', 'Timer', 'Sound', 'Tasks', 'Auth', HomeCtrl]);
 })();

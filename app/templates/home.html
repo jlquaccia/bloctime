@@ -19,25 +19,31 @@
 <!-- Hidden Menu -->
 <div class="navmenu navmenu-default navmenu-fixed-left">
   <a href="#" class="navmenu-brand noPaddingLeft taskHistoryTitle">Task History</a>
-  <form>
-    <div class="form-group pt10">
-      <input type="text" class="form-control" placeholder="Enter task" ng-model="newTask">
-      <br>
-      <div class="btnContainer">
-        <section class="addTaskBtn">
-          <p>
-            <button class="btn btn-1 btn-1d" ng-click="addTask(newTask)">Add Task</button>
-          </p>
-        </section>
+  <div ng-show="firebaseUser">
+    <form>
+      <div class="form-group pt10">
+        <input type="text" class="form-control" placeholder="Enter task" ng-model="newTask">
+        <br>
+        <div class="btnContainer">
+          <section class="addTaskBtn">
+            <p>
+              <button class="btn btn-1 btn-1d" ng-click="addTask(newTask)">Add Task</button>
+            </p>
+          </section>
+        </div>
       </div>
-    </div>
-  </form>
-  <ul class="nav navmenu-nav tasks">
-    <li ng-repeat="task in tasks | orderBy:'-created_at'">
-      <a href="#">{{task.task}}</a>
-      <i class="ion-ios-close-empty deleteTask" ng-click="deleteTask(task)"></i>
-    </li>
-  </ul>
+    </form>
+    <ul class="nav navmenu-nav tasks">
+      <li ng-repeat="task in tasks | orderBy:'-created_at'">
+        <a href="#">{{task.task}}</a>
+        <i class="ion-ios-close-empty deleteTask" ng-click="deleteTask(task)"></i>
+      </li>
+    </ul>
+  </div>
+
+  <div ng-show="!firebaseUser">
+    <p class="loggedOutTaskHistory">You must be logged in to record your completed tasks. You can log in on the top right corner of the screen.</p>
+  </div>
 </div>
 
 <div class="canvas">
@@ -54,9 +60,13 @@
     <a href="#" class="question" id="trigger-overlay" ng-click="toggleInstructionOverlay()">
       <i class="ion-ios-help-outline"></i>
     </a>
-    <div class="question userAuth">
+    <div ng-show="!firebaseUser" class="question userAuth">
       <a ui-sref="register">Register</a> <span>&#47;</span>
       <a ui-sref="login">Login</a>
+    </div>
+    <div ng-show="firebaseUser" class="question userAuth loggedIn">
+      Hi {{firebaseUser.email}}! <span class="loggedInSpanPadding">&#47;</span>
+      <a href="#" ng-click="auth.$signOut()">Logout</a>
     </div>
   </div>
   

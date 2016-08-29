@@ -1,25 +1,21 @@
 (function() {
-  function AuthCtrl($state, Auth) {
-    var authCtrl = this;
+  function AuthCtrl($scope, $state, Auth) {
+    $scope.email = '';
+    $scope.password = '';
 
-    authCtrl.user = {
-      email: '',
-      password: ''
-    };
-
-    authCtrl.login = function() {
-      Auth.$authWithPassword(authCtrl.user).then(function(auth) {
+    $scope.login = function() {
+      Auth.$signInWithEmailAndPassword($scope.email, $scope.password).then(function(auth) {
         $state.go('home');
       }, function(error) {
-        authCtrl.error = error;
+        $scope.error = error;
       });
     };
 
-    authCtrl.register = function() {
-      Auth.$createUser(authCtrl.user).then(function(user) {
-        authCtrl.login();
+    $scope.register = function() {
+      Auth.$createUserWithEmailAndPassword($scope.email, $scope.password).then(function(user) {
+        $scope.login();
       }, function(error) {
-        authCtrl.error = error;
+        $scope.error = error;
       });
     };
 
@@ -29,5 +25,5 @@
 
   angular
     .module('bloctime')
-    .controller('AuthCtrl', ['$state', 'Auth', AuthCtrl]);
+    .controller('AuthCtrl', ['$scope', '$state', 'Auth', AuthCtrl]);
 })();
