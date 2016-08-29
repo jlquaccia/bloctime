@@ -142,8 +142,8 @@ body {
   -o-transition: .5s ease-in-out;
   transition: .5s ease-in-out;
   cursor: pointer;
-  top: 50px;
-  left: 50px;
+  top: 10px;
+  left: 20px;
   z-index: 9;
 }
 
@@ -367,7 +367,7 @@ body {
 }
 
 .btn-1d:hover:after {
-  width: 101%;
+  width: 102%;
   opacity: 1;
 }
 
@@ -463,10 +463,10 @@ span {
 /* Question Mark */
 /*-----------------------------------------------------------------------------------------------------------------------------------*/
 
-a.question {
+.question {
   position: absolute;
-  top: 50px;
-  right: 50px;
+  top: 0;
+  right: 20px;
   z-index: 9;
   font-size: 4em;
   color: #7D7D7D;
@@ -611,4 +611,15 @@ span.instructionNumber {
   .overlay ul li {
     min-height: 34px;
   }
+}
+
+/*-----------------------------------------------------------------------------------------------------------------------------------*/
+/* Register / Login Links */
+/*-----------------------------------------------------------------------------------------------------------------------------------*/
+
+.question.userAuth {
+  display: flex;
+  top: 10px;
+  right: 80px;
+  font-size: 3em;
 }

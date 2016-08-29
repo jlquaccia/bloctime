@@ -1,0 +1,33 @@
+<h3 class="backBtn">
+  <a ui-sref="home"><i class="ion-ios-arrow-thin-left"></i> Back</a>
+</h3>
+
+<div class="timerTitle registerTimerTitle">
+  <span class="line-1">the</span>
+  <span class="line-2">pomodoro</span>
+  <span class="line-3">timer experiment</span>
+</div>
+
+<div class="registrationWrapper">
+  <h1>Sign Up</h1>
+
+  <div ng-show="authCtrl.error">
+    <span>{{authCtrl.error.message}}</span>
+  </div>
+
+  <form ng-submit="authCtrl.register()">
+    <div class="form-group">
+      <input type="email" class="form-control" placeholder="Email" ng-model="authCtrl.user.email">
+    </div>
+    <div class="form-group">
+      <input type="password" class="form-control" placeholder="Password" ng-model="authCtrl.user.password">
+    </div>
+    <div class="btnContainer loginBtnContainer">
+      <section>
+        <p>
+          <button type="submit" class="btn btn-1 btn-1d">Sign Up</button>
+        </p>
+      </section>
+    </div>
+  </form>
+</div>

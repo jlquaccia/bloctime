@@ -1,0 +1,49 @@
+.registrationWrapper {
+  text-align: center;
+  position: relative;
+  top: 20em;
+}
+
+.registrationWrapper .form-group {
+  width: 15%;
+  margin: 0 auto;
+}
+
+.registrationWrapper .registerBtn {
+  border: 1px solid #000;
+  padding: 5px 10px;
+}
+
+.registrationWrapper .form-control {
+  border-radius: 0;
+}
+
+.registerTimerTitle {
+  top: 1em;
+}
+
+.backBtn {
+  position: absolute;
+  top: 10px;
+  left: 30px;
+}
+
+.backBtn a {
+  color: #000;
+}
+
+.loginBtnContainer section {
+  padding-top: 0;
+}
+
+.loginBtnContainer section .btn {
+  padding: 6px 12px;
+  color: #000;
+  border: 1px solid #000;
+  font-weight: inherit;
+  font-size: 1em;
+}
+
+.loginBtnContainer section .btn:hover {
+  color: #fff;
+}

@@ -13,6 +13,16 @@
         url: '/',
         controller: 'HomeCtrl as home',
         templateUrl: '/templates/home.html'
+      })
+      .state('login', {
+        url: '/login',
+        controller: 'AuthCtrl as authCtrl',
+        templateUrl: '/templates/login.html'
+      })
+      .state('register', {
+        url: '/register',
+        controller: 'AuthCtrl as authCtrl',
+        templateUrl: '/templates/register.html'
       });
   }
 
