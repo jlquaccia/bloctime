@@ -259,28 +259,6 @@ body {
   font-size: 1.5em;
 }
 
-@media (min-width: 0) {
-  .navbar-toggle {
-    display: block;
-  }
-}
-
-@media (min-width: 992px) {
-  body {
-    padding: 0;
-  }
-  
-  .navbar {
-    right: auto;
-    background: none;
-    border: none;
-  }
-  
-  .canvas {
-    padding: 0;
-  }
-}
-
 /*-----------------------------------------------------------------------------------------------------------------------------------*/
 /* Start / Reset Button */
 /*-----------------------------------------------------------------------------------------------------------------------------------*/
@@ -493,21 +471,6 @@ span {
   z-index: 9;
 }
 
-/*-----------------------------------------------------------------------------------------------------------------------------------*/
-/* Instructions Overlay */
-/*-----------------------------------------------------------------------------------------------------------------------------------*/
-
-@media screen and (max-width: 34em) {
-  .overlay {
-    font-size: 90%;
-  }
-  
-  .overlay .overlay-close {
-    -webkit-transform: scale(0.5);
-    transform: scale(0.5);
-  }
-}
-
 /* Overlay style */
 
 .overlay {
@@ -560,12 +523,12 @@ span {
 
 .overlay ul li {
   display: flex;
-  height: 20%;
-  height: calc(100% / 5);
   min-height: 54px;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   font-size: 3em;
+  width: 95%;
+  text-align: left;
 }
 
 .overlay ul li a {
@@ -603,7 +566,7 @@ span {
 }
 
 span.instructionNumber {
-  padding-right: 20px;
+  padding: 0 20px;
 }
 
 .overlay ul li a.pomodoroYouTubeLink {
