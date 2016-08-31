@@ -13,14 +13,18 @@
 
     return {
       all: tasks,
-      addTask: function(task) {
+      addTask: function(task, uid) {
         tasks.$add({
           task: task,
+          uid: uid,
           created_at: new Date().today() + new Date().timeNow()
         }).then(function(ref) {
           var id = ref.key;
           console.log('added record with id: ' + id + ' task: ' + task);
         });
+      },
+      getCurrentUserTasks: function(uid) {
+        return $firebaseArray(ref.orderByChild('uid').equalTo(uid));
       },
       deleteTask: function(task) {
         var c = confirm('Are you sure?');

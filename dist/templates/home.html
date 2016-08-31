@@ -34,7 +34,7 @@
       </div>
     </form>
     <ul class="nav navmenu-nav tasks">
-      <li ng-repeat="task in tasks | orderBy:'-created_at'">
+      <li ng-repeat="task in currentUserTasks | orderBy:'-created_at'">
         <a href="#">{{task.task}}</a>
         <i class="ion-ios-close-empty deleteTask" ng-click="deleteTask(task)"></i>
       </li>

@@ -1,13 +1,15 @@
 (function() {
-  function HomeCtrl($scope, Timer, Sound, Tasks, Auth) {
+  function HomeCtrl($scope, Timer, Sound, Tasks, Auth, $firebaseArray) {
     $scope.timer = Timer;
     $scope.sound = Sound;
-    $scope.tasks = Tasks.all;
     $scope.menuOpen = false;
     $scope.instructionOverlay = false;
     $scope.auth = Auth;
 
-    console.log('timerState is ' + Timer.getState());
+    // Retrieve only the current users tasks
+    Auth.$waitForSignIn().then(function(data) {
+      $scope.currentUserTasks = Tasks.getCurrentUserTasks(data.uid);
+    });
 
     $scope.$watch(Timer.getCurrentTime, function(newVal, oldVal) {
       if (newVal === 0) {
@@ -26,7 +28,9 @@
     $scope.addTask = function(task) {
       if (task === '') return;
 
-      Tasks.addTask(task);
+      uid = Auth.$getAuth().uid;
+
+      Tasks.addTask(task, uid);
       $scope.newTask = '';
     };
 
@@ -54,5 +58,5 @@
 
   angular
     .module('bloctime')
-    .controller('HomeCtrl', ['$scope', 'Timer', 'Sound', 'Tasks', 'Auth', HomeCtrl]);
+    .controller('HomeCtrl', ['$scope', 'Timer', 'Sound', 'Tasks', 'Auth', '$firebaseArray', HomeCtrl]);
 })();
