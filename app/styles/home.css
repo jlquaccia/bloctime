@@ -604,3 +604,8 @@ span.instructionNumber {
 .loggedInSpanPadding {
   padding: 0 5px;
 }
+
+.question.mobileLoggedOut,
+.question.mobileLoggedIn {
+  display: none;
+}

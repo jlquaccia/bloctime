@@ -1,14 +1,26 @@
 (function() {
-  function HomeCtrl($scope, Timer, Sound, Tasks, Auth, $firebaseArray) {
+  function HomeCtrl($scope, $state, Timer, Sound, Tasks, Auth, $firebaseArray) {
     $scope.timer = Timer;
     $scope.sound = Sound;
     $scope.menuOpen = false;
     $scope.instructionOverlay = false;
     $scope.auth = Auth;
 
+    $scope.tasks = Tasks.all;
+
     // Retrieve only the current users tasks
     Auth.$waitForSignIn().then(function(data) {
+      if (!data) return;
+
       $scope.currentUserTasks = Tasks.getCurrentUserTasks(data.uid);
+
+      $scope.deleteTask = function(task) {
+        var c = confirm('Are you sure?');
+
+        if (c) {
+          $scope.currentUserTasks.$remove(task);
+        }
+      };
     });
 
     $scope.$watch(Timer.getCurrentTime, function(newVal, oldVal) {
@@ -34,10 +46,6 @@
       $scope.newTask = '';
     };
 
-    $scope.deleteTask = function(task) {
-      Tasks.deleteTask(task);
-    };
-
     $scope.toggleMenu = function() {
       $scope.menuOpen = !$scope.menuOpen;
     };
@@ -54,9 +62,15 @@
     $scope.auth.$onAuthStateChanged(function(firebaseUser) {
       $scope.firebaseUser = firebaseUser;
     });
+
+    $scope.signOut = function() {
+      $scope.auth.$signOut();
+      $scope.menuOpen = false;
+      $('#hamburgerMenu').click();
+    };
   }
 
   angular
     .module('bloctime')
-    .controller('HomeCtrl', ['$scope', 'Timer', 'Sound', 'Tasks', 'Auth', '$firebaseArray', HomeCtrl]);
+    .controller('HomeCtrl', ['$scope', '$state', 'Timer', 'Sound', 'Tasks', 'Auth', '$firebaseArray', HomeCtrl]);
 })();

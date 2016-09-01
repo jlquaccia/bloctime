@@ -84,6 +84,54 @@
 }
 
 /*---------------------------------------------------------------------------------------------------------------------------------*/
+/* 400px and Below */
+/*---------------------------------------------------------------------------------------------------------------------------------*/
+
+@media (max-width: 400px) {
+  .line-2 {
+    font-size: 70px;
+    width: 103%;
+  }
+
+  .line2Mobile {
+    font-size: 40px;
+  }
+
+  .question.loggedIn,
+  .question.loggedOut {
+    display: none;
+  }
+
+  .canvas {
+    overflow: hidden;
+  }
+
+  .container-fluid.no_padding {
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .timerTitle {
+    top: -230%;
+  }
+
+  .registerTimerTitle {
+    top: 2.5em;
+  }
+
+  .question.mobileLoggedOut,
+  .question.mobileLoggedIn {
+    display: flex;
+    position: relative;
+    top: 0;
+    left: 0;
+    margin: 10px 0;
+    justify-content: center;
+  }
+}
+
+/*---------------------------------------------------------------------------------------------------------------------------------*/
 /* 34em and Below */
 /*---------------------------------------------------------------------------------------------------------------------------------*/
 
@@ -114,5 +162,17 @@
   
   .overlay ul li {
     min-height: 34px;
+  }
+}
+
+/*---------------------------------------------------------------------------------------------------------------------------------*/
+/* Landscape */
+/*---------------------------------------------------------------------------------------------------------------------------------*/
+
+@media screen and (device-width: 640px) and (device-height: 360px) and (orientation: landscape) {
+  .timerTitle {
+    top: 20%;
+    position: relative;
+    margin: 0;
   }
 }

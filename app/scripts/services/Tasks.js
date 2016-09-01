@@ -25,13 +25,6 @@
       },
       getCurrentUserTasks: function(uid) {
         return $firebaseArray(ref.orderByChild('uid').equalTo(uid));
-      },
-      deleteTask: function(task) {
-        var c = confirm('Are you sure?');
-
-        if (c) {
-          tasks.$remove(task);
-        }
       }
     };
   }

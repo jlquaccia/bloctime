@@ -18,6 +18,15 @@
 
 <!-- Hidden Menu -->
 <div class="navmenu navmenu-default navmenu-fixed-left">
+  <div ng-show="!firebaseUser" class="question userAuth loggedOut mobileLoggedOut">
+    <a ui-sref="register">Register</a> <span>&#47;</span>
+    <a ui-sref="login">Login</a>
+  </div>
+  <div ng-show="firebaseUser" class="question userAuth loggedIn mobileLoggedIn">
+    Hi {{firebaseUser.email}}! <span class="loggedInSpanPadding">&#47;</span>
+    <a href="#" ng-click="signOut()">Logout</a>
+  </div>
+
   <a href="#" class="navmenu-brand noPaddingLeft taskHistoryTitle">Task History</a>
   <div ng-show="firebaseUser">
     <form>
@@ -60,7 +69,7 @@
     <a href="#" class="question" id="trigger-overlay" ng-click="toggleInstructionOverlay()">
       <i class="ion-ios-help-outline"></i>
     </a>
-    <div ng-show="!firebaseUser" class="question userAuth">
+    <div ng-show="!firebaseUser" class="question userAuth loggedOut">
       <a ui-sref="register">Register</a> <span>&#47;</span>
       <a ui-sref="login">Login</a>
     </div>
@@ -79,16 +88,16 @@
     </div>
 
     <div ng-show="timer.getTotalCount() > 0 && timer.getState() === 'pomodoro'" class="timerTitle">
-      <span class="line-2">time to work</span>
+      <span class="line-2 line2Mobile">time to work</span>
     </div>
 
     <div ng-show="timer.getTotalCount() > 0 && timer.getState() === 'break'" class="timerTitle">
-      <span class="line-2">take a break</span>
+      <span class="line-2 line2Mobile">take a break</span>
     </div>
 
     <div ng-show="timer.getTotalCount() > 0 && timer.getState() === 'thirtyMinuteBreak'" class="timerTitle">
       <span class="line-1">take a</span>
-      <span class="line-2">long break</span>
+      <span class="line-2 line2Mobile">long break</span>
     </div>
 
     <div class="countdownAndBtnWrapper">
