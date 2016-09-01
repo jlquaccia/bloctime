@@ -175,4 +175,13 @@
     position: relative;
     margin: 0;
   }
+
+  .overlay ul li {
+    font-size: .7em;
+  }
+
+  .overlay .overlay-close {
+    width: 30px;
+    height: 30px;
+  }
 }
