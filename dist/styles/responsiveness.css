@@ -129,6 +129,23 @@
     margin: 10px 0;
     justify-content: center;
   }
+
+  .question {
+    font-size: 3em;
+  }
+
+  #hamburgerMenu {
+    width: 40px;
+  }
+
+  #hamburgerMenu span:nth-child(2),
+  #hamburgerMenu span:nth-child(3) {
+    top: 12px;
+  }
+
+  #hamburgerMenu span:nth-child(4) {
+    top: 24px;
+  }
 }
 
 /*---------------------------------------------------------------------------------------------------------------------------------*/
